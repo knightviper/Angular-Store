@@ -1,0 +1,42 @@
+<div ng-show = "panel.isSet(3)">
+			<h4>Reviews</h4>
+			<ul>
+				<li ng-repeat = "review in product.reviews">
+					{{review.stars}}
+					{{review.body}}
+					{{review.author}}
+				</li>
+			</ul>
+			<!--Live preview and Form section for review-->
+			<div>
+				<form ng-controller = "ReviewController as reviewCtrl" ng-submit = "reviewCtrl.addReview(product)">
+				
+					<!-- Live Preview Section-->
+					<blockquote>
+						<p>{{reviewCtrl.review.stars}}</p>
+						<p>{{reviewCtrl.review.body}}</p>
+						<p>{{reviewCtrl.review.author}}</p>
+					</blockquote>
+					
+					<!--Main Form Section-->
+					<div class = "form-group">
+					  <select ng-model = "reviewCtrl.review.stars" class = "form-control" ng-options = "stars for stars in [5, 4, 3, 2, 1]">
+					    <option value>Rate the product</option>
+					  </select>
+					</div>
+					
+					<div class = "form-group">
+					      <textarea ng-model = "reviewCtrl.review.body" class="form-control" placeholder="Write a short Review" rows = "3"></textarea>
+					</div>
+					
+					<div class = "form-group">
+					      <input ng-model = "reviewCtrl.review.author" type="email" class="form-control" placeholder="ashikhaizu5@gmail.com">
+					</div>
+					
+					<input type="submit" class="btn btn-primary pull-right" value = "SUBMIT"/>
+					
+					
+					
+				</form>
+			</div>
+		</div>
